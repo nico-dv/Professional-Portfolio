@@ -1,14 +1,11 @@
-"""" This converts a pdf into a string"""
+from PyPDF2 import PdfReader
 
-import PyPDF2
 
-pdfFileObject = open("/home/nico/Desktop/nicolae-valeanu.pdf", 'rb')
+def pdf_converter():
+    reader = PdfReader("/home/nico/Desktop/sample.pdf")
+    page = reader.pages[0]
+    return page.extract_text()
+    
 
-pdfReader = PyPDF2.PdfFileReader(pdfFileObject)
 
-print(" No. Of Pages :", pdfReader.numPages)
-
-pageObject = pdfReader.getPage(0)
-
-# pageObject.extract_text()
-
+print(pdf_converter())
